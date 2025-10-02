@@ -1,32 +1,43 @@
 # guess.py
-# Simple number guessing game 🎲
+# Simple number guessing game 🎲 with replay option
 
 import random
 
-def main():
-    print("Welcome to the Guessing Game! 🎉")
-    print("I'm thinking of a number between 1 and 20...")
+def play_game():
+    print("\nWelcome to the Ieva Number Game! 🎉")
+    print("I have a number between 1 and 10 in mind...")
+    print("You have 3 tries to guess it!")
 
     # computer chooses random number
-    secret = random.randint(1, 20)
-    guess = None
-    attempts = 0
+    secret = random.randint(1, 10)
+    attempts = 3  # limit of tries
 
-    # loop until guessed correctly
-    while guess != secret:
+    # Loop for max attempts
+    for attempt in range(1, attempts + 1):
         try:
-            guess = int(input("Your guess: "))
-            attempts += 1
+            guess = int(input(f"Attempt {attempt}: Take a guess: "))
 
             if guess < secret:
-                print("Too low! Try again.")
+                print("Too low! ❄️")
             elif guess > secret:
-                print("Too high! Try again.")
+                print("Too high! 🔥")
             else:
                 print(f"🎉 Correct! The number was {secret}.")
-                print(f"You guessed it in {attempts} tries.")
+                print(f"You guessed it in {attempt} tries.")
+                break
         except ValueError:
-            print("Please enter a valid number.")
+            print("⚠️ Please enter a valid number.")
+    else:
+        # Only runs if loop never breaks
+        print(f"😢 Game Over! The number was {secret}.")
+
+def main():
+    while True:  # loop for replay
+        play_game()
+        again = input("\nDo you want to play again? (y/n): ").lower()
+        if again != "y":
+            print("👋 Thanks for playing! See you next time!")
+            break
 
 if __name__ == "__main__":
     main()
