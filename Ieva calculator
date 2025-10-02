@@ -1,0 +1,77 @@
+# calculator_jokes.py
+import random
+
+def add(x, y):
+    jokes = [
+        "That was easy peasy! 🍋",
+        "You’re good at addition, but can you add friends too? 😏",
+        "Adding is like friendship, it only grows ❤️"
+    ]
+    print(random.choice(jokes))
+    return x + y
+
+def subtract(x, y):
+    jokes = [
+        "Subtracting… like my free time disappearing ⏳",
+        "Careful! Don’t subtract your happiness 😅",
+        "That was easier than skipping ads on YouTube 📺"
+    ]
+    print(random.choice(jokes))
+    return x - y
+
+def multiply(x, y):
+    jokes = [
+        "Multiplying fun times, just like rabbits 🐇🐇",
+        "Wow, you multiplied that faster than my problems 😂",
+        "Careful, don’t multiply your stress levels!"
+    ]
+    print(random.choice(jokes))
+    return x * y
+
+def divide(x, y):
+    jokes = [
+        "Dividing… like pizza with friends 🍕",
+        "I hope you’re not dividing bills again 💸",
+        "Easy math, harder than dividing chocolate fairly 😅"
+    ]
+    print(random.choice(jokes))
+    return x / y
+
+def calculator():
+    while True:
+        print("\nOptions:")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Exit")
+
+        choice = input("Choose an option (1/2/3/4/5): ")
+
+        if choice == '5':
+            print("Goodbye! 👋")
+            break
+
+        try:
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+
+            if choice == '1':
+                print("Result:", add(num1, num2))
+            elif choice == '2':
+                print("Result:", subtract(num1, num2))
+            elif choice == '3':
+                print("Result:", multiply(num1, num2))
+            elif choice == '4':
+                if num2 == 0:
+                    print("Oops! Division by zero is not allowed 🚫")
+                else:
+                    print("Result:", divide(num1, num2))
+            else:
+                print("Invalid choice. Try again!")
+
+        except ValueError:
+            print("Please enter valid numbers only! 🙃")
+
+if __name__ == "__main__":
+    calculator()
