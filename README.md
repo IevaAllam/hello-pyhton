@@ -38,5 +38,4 @@ This space is where I share my learning journey in **Python & Machine Learning**
 ---
 
 ## 📫 Connect with Me
-- 🌐 GitHub: [your GitHub profile link here]  
-- 💼 LinkedIn: [your LinkedIn link here]
+- 💼 LinkedIn:[ https://www.linkedin.com/in/ieva-urbanaviciute-1021ba130?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app]
