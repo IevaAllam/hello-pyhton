@@ -1,18 +1,15 @@
 import tkinter as tk
 from tkinter import messagebox
-import math
-import random
+import math, random
 
 # --- Crazy Scientist Jokes ---
 jokes = [
     "E=mc²... Easy = math calculator² 🤓",
     "That was so simple, my test tubes could solve it!",
-    "Use your brain, not just buttons! 🧠",
-    "I divided by zero once... the universe almost collapsed!",
-    "Calculations complete... now where's my coffee? ☕",
     "Even Einstein would say: 'Nice job!'",
-    "Math is just science in disguise! 🔬",
+    "I divided by zero once... the universe almost collapsed!",
     "Oops, did I just invent time travel with that result?",
+    "Calculations complete... now where's my coffee? ☕",
 ]
 
 def scientist_speaks():
@@ -66,14 +63,14 @@ def special(func):
 # --- GUI Setup ---
 root = tk.Tk()
 root.title("Crazy Scientist Calculator")
+root.configure(bg="#f6f6f6")
 
-# LAB STYLE BACKGROUND
-root.configure(bg="#1e272e")
+# Bigger display area
+entry = tk.Entry(root, width=22, borderwidth=5, font=("Arial", 20, "bold"), 
+                 bg="#ffffff", fg="#2f3640", relief="sunken", justify="right")
+entry.grid(row=0, column=0, columnspan=5, pady=15, ipady=10)
 
-entry = tk.Entry(root, width=30, borderwidth=5, font=("Arial", 16), bg="#dcdde1", fg="#2f3640")
-entry.grid(row=0, column=0, columnspan=5, pady=10)
-
-# --- Buttons ---
+# --- Buttons (smaller + pastel colors) ---
 buttons = [
     ("7",1,0),("8",1,1),("9",1,2),("/",1,3),("√",1,4),
     ("4",2,0),("5",2,1),("6",2,2),("*",2,3),("x²",2,4),
@@ -87,26 +84,29 @@ for (text,row,col) in buttons:
         action = lambda t=text: special("sqrt" if t=="√" else 
                                         "square" if t=="x²" else 
                                         t)
-        color = "#9b59b6"  # purple for special functions
+        color = "#c8b6ff"  # pastel lavender
     elif text == "C":
         action = clear
-        color = "#e74c3c"  # red
+        color = "#ffadad"  # pastel red
     elif text == "=":
         action = calculate
-        color = "#27ae60"  # green
+        color = "#a0e7e5"  # pastel teal
     elif text in ["/","*","-","+","%"]:
         action = lambda t=text: press(t)
-        color = "#f39c12"  # orange for operators
+        color = "#ffd6a5"  # pastel peach
     else:
         action = lambda t=text: press(t)
-        color = "#3498db"  # blue for numbers
+        color = "#bde0fe"  # pastel blue
 
-    btn = tk.Button(root, text=text, width=6, height=2,
+    btn = tk.Button(root, text=text, width=5, height=2,
                     font=("Arial", 12, "bold"),
-                    bg=color, fg="white",
-                    relief="flat", bd=0)
+                    bg=color, fg="#2f3640",
+                    relief="raised", bd=2)
     btn.config(command=action)
-    btn.grid(row=row, column=col, padx=5, pady=5, ipadx=5, ipady=5)
+    btn.grid(row=row, column=col, padx=3, pady=3, ipadx=3, ipady=3)
+
+# Reserve place for scientist character (we’ll add drawing/image here later)
+char_label = tk.Label(root, text="🧑‍🔬", font=("Arial", 40), bg="#f6f6f6")
+char_label.grid(row=1, column=5, rowspan=5, padx=15)
 
 root.mainloop()
-
