@@ -67,8 +67,11 @@ def special(func):
 root = tk.Tk()
 root.title("Crazy Scientist Calculator")
 
-entry = tk.Entry(root, width=30, borderwidth=5, font=("Arial", 16))
-entry.grid(row=0, column=0, columnspan=5)
+# LAB STYLE BACKGROUND
+root.configure(bg="#1e272e")
+
+entry = tk.Entry(root, width=30, borderwidth=5, font=("Arial", 16), bg="#dcdde1", fg="#2f3640")
+entry.grid(row=0, column=0, columnspan=5, pady=10)
 
 # --- Buttons ---
 buttons = [
@@ -84,15 +87,26 @@ for (text,row,col) in buttons:
         action = lambda t=text: special("sqrt" if t=="√" else 
                                         "square" if t=="x²" else 
                                         t)
+        color = "#9b59b6"  # purple for special functions
     elif text == "C":
         action = clear
+        color = "#e74c3c"  # red
     elif text == "=":
         action = calculate
+        color = "#27ae60"  # green
+    elif text in ["/","*","-","+","%"]:
+        action = lambda t=text: press(t)
+        color = "#f39c12"  # orange for operators
     else:
         action = lambda t=text: press(t)
+        color = "#3498db"  # blue for numbers
 
-    btn = tk.Button(root, text=text, width=6, height=2, font=("Arial", 12), command=action)
-    btn.grid(row=row, column=col, padx=2, pady=2)
+    btn = tk.Button(root, text=text, width=6, height=2,
+                    font=("Arial", 12, "bold"),
+                    bg=color, fg="white",
+                    relief="flat", bd=0)
+    btn.config(command=action)
+    btn.grid(row=row, column=col, padx=5, pady=5, ipadx=5, ipady=5)
 
-# --- Run app ---
 root.mainloop()
+
