@@ -1,0 +1,85 @@
+import random
+
+def calculator():
+    print("Welcome to the Fun Calculator! 😄")
+    
+    while True:
+        try:
+            num1 = float(input("Enter the first number: "))
+            operator = input("Enter an operator (+, -, *, /, %, ^): ")
+            num2 = float(input("Enter the second number: "))
+        except ValueError:
+            print("Oops! Please enter valid numbers. 😅")
+            continue
+
+        if operator == '+':
+            result = num1 + num2
+            op_name = "addition"
+        elif operator == '-':
+            result = num1 - num2
+            op_name = "subtraction"
+        elif operator == '*':
+            result = num1 * num2
+            op_name = "multiplication"
+        elif operator == '/':
+            if num2 == 0:
+                print("Can't divide by zero! 🤯")
+                continue
+            result = num1 / num2
+            op_name = "division"
+        elif operator == '%':
+            result = (num1 * num2) / 100
+            op_name = "percentage"
+        elif operator == '^':
+            result = num1 ** num2
+            op_name = "power"
+        else:
+            print("Unknown operator! 😅")
+            continue
+
+        print(f"Result: {result}")
+
+        # Smart joke based on operation and result
+        if result > 1000:
+            print(f"Whoa! That's a huge number from your {op_name}! 🚀")
+        elif result < 0:
+            print(f"Uh-oh, a negative result in {op_name}! 😬")
+        elif 0 < result < 1:
+            print(f"Tiny number from {op_name}! 🐜")
+        else:
+            print(f"Your {op_name} worked perfectly! 😁")
+
+        # Big pool of extra jokes
+        extra_jokes = [
+            "Math is fun, especially when you don't divide by zero! 😂",
+            "Keep calm and multiply on! ✨",
+            "Did someone call this a calculation party? 🥳",
+            "Easy peasy lemon squeezy! 😎",
+            "Numbers are friends, not food. 🍕",
+            "You just crunched those numbers like a pro! 💪",
+            "If math was a sport, you'd be the MVP! 🏆",
+            "I bet Einstein would be proud of you! 🧠",
+            "This calculator is smiling right now! 😁",
+            "Adding fun to numbers since 2025! 🎉",
+            "Math rocks — literally. 🪨",
+            "That result deserves a round of applause 👏",
+            "Zero fear, full calculation power! ⚡",
+            "Are you sure you’re not a math wizard? 🧙‍♂️",
+            "You handled that like a number ninja! 🥷",
+            "I’ve seen smaller numbers, but not cooler ones 😎",
+            "That was smoother than butter! 🧈",
+            "Even the numbers are dancing now 💃",
+            "This is what calculator dreams are made of 🌈",
+            "No math monsters under your bed tonight 🛏️",
+            "Crunching numbers never felt so good 🤩",
+            "Boom! Another calculation done 💥",
+            "Math magic unlocked ✨"
+        ]
+        print(random.choice(extra_jokes))
+
+        if input("Calculate again? (yes/no): ").lower() != 'yes':
+            print("Thanks for calculating! Bye! 👋")
+            break
+
+calculator()
+
