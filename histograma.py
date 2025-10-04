@@ -6,7 +6,7 @@ values = [158, 64, 177]
 total = sum(values)
 percentages = [v / total * 100 for v in values]
 
-# Plot
+# Create plot
 plt.figure(figsize=(6, 4))
 bars = plt.bar(stages, values, color="gray", edgecolor="black")
 
@@ -26,4 +26,5 @@ plt.xticks(fontname="Times New Roman", fontsize=11)
 plt.yticks(fontname="Times New Roman", fontsize=11)
 plt.tight_layout()
 
+# Show plot
 plt.show()
